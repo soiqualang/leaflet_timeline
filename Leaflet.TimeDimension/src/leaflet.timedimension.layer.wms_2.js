@@ -255,8 +255,12 @@ L.TimeDimension.Layer.WMS = L.TimeDimension.Layer.extend({
         this._capabilitiesRequested = true;
         var url = this._getCapabilitiesUrl();
         if (this._proxy) {
-            //url = this._proxy + '?url=' + encodeURIComponent(url);
-            url = this._proxy + '?url=' + url;
+            url = this._proxy + '?url=' + encodeURIComponent(url);
+            //url = this._proxy + '?url=' + url;
+			/*
+			url = 'http://localhost/leaflet_timeline/xml2.xml';
+			url = this._proxy + '?url=' + url;
+			*/
             console.log(url);
         }
         var oReq = new XMLHttpRequest();

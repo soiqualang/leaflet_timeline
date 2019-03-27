@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE WMT_MS_Capabilities SYSTEM "http://schemas.opengis.net/wms/1.1.1/capabilities_1_1_1.dtd">
+<WMT_MS_Capabilities version="1.1.1" updateSequence="1553647452825" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <Service>
+    <Name>WMS</Name>
+    <Title>OGC MetOcean DWG Best Practice Example</Title>
+    <Abstract>Example WMS web service conforming to MetOcean DWG Best Practice specification.</Abstract>
+    <KeywordList>
+      <Keyword>time</Keyword>
+      <Keyword>elevation</Keyword>
+      <Keyword>best practice</Keyword>
+      <Keyword>metocean</Keyword>
+    </KeywordList>
+    <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms"/>
+    <ContactInformation>
+      <ContactPersonPrimary>
+        <ContactPerson>IBL Support Team</ContactPerson>
+        <ContactOrganization>IBL Software Engineering</ContactOrganization>
+      </ContactPersonPrimary>
+      <ContactPosition>Support</ContactPosition>
+      <ContactElectronicMailAddress>support@iblsoft.com</ContactElectronicMailAddress>
+    </ContactInformation>
+    <Fees>none</Fees>
+    <AccessConstraints>none</AccessConstraints>
+  </Service>
+  <Capability>
+    <Request>
+      <GetCapabilities>
+        <Format>text/xml</Format>
+        <DCPType>
+          <HTTP>
+            <Get>
+              <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms"/>
+            </Get>
+            <Post>
+              <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms"/>
+            </Post>
+          </HTTP>
+        </DCPType>
+      </GetCapabilities>
+      <GetMap>
+        <Format>image/png</Format>
+        <Format>image/png; mode=8bit</Format>
+        <Format>image/png; mode=8bit-grayscale</Format>
+        <Format>image/jpeg</Format>
+        <Format>image/gif</Format>
+        <Format>image/jp2</Format>
+        <Format>image/tiff</Format>
+        <Format>image/tiff; mode=8bit-grayscale</Format>
+        <Format>image/geotiff; mode=8bit-grayscale</Format>
+        <Format>image/svg+xml</Format>
+        <Format>image/svgz+xml</Format>
+        <Format>application/x-shockwave-flash</Format>
+        <Format>application/pdf</Format>
+        <Format>image/x-eps</Format>
+        <DCPType>
+          <HTTP>
+            <Get>
+              <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms"/>
+            </Get>
+            <Post>
+              <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms"/>
+            </Post>
+          </HTTP>
+        </DCPType>
+      </GetMap>
+      <GetFeatureInfo>
+        <Format>text/xml</Format>
+        <Format>text/html</Format>
+        <Format>application/vnd.ogc.se_xml</Format>
+        <DCPType>
+          <HTTP>
+            <Get>
+              <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms"/>
+            </Get>
+            <Post>
+              <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms"/>
+            </Post>
+          </HTTP>
+        </DCPType>
+      </GetFeatureInfo>
+    </Request>
+    <Exception>
+      <Format>text/xml</Format>
+      <Format>application/vnd.ogc.se_xml</Format>
+    </Exception>
+    <Layer>
+      <Title>Various time and elevation dependant layers</Title>
+      <SRS>EPSG:4326</SRS>
+      <SRS>CRS:84</SRS>
+      <SRS>EPSG:27700</SRS>
+      <SRS>EPSG:3034</SRS>
+      <SRS>EPSG:3857</SRS>
+      <SRS>EPSG:900913</SRS>
+      <SRS>ESRI:102018</SRS>
+      <SRS>ESRI:102021</SRS>
+      <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+      <BoundingBox SRS="CRS:84" minx="-180" miny="-90" maxx="180" maxy="90"/>
+      <Layer>
+        <Title>Observations and Remote Sensing Data</Title>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+        <Layer queryable="1">
+          <Name>surface-obs</Name>
+          <Title>Surface Observations (SYNOP, BUOY, METAR)</Title>
+          <Abstract>Default value for the time dimension is the latest observation time slot.</Abstract>
+          <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+          <Dimension name="time" units="ISO8601"/>
+          <Extent name="time" current="0" nearestValue="0" multipleValues="0" default="2019-03-27T00:00:00Z">2016-01-24T00:00:00Z,2016-01-24T06:00:00Z,2016-01-24T12:00:00Z,2016-01-24T18:00:00Z,2019-03-03T00:00:00Z,2019-03-11T00:00:00Z,2019-03-16T00:00:00Z,2019-03-22T00:00:00Z,2019-03-26T00:00:00Z,2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z,2019-03-27T00:00:00Z</Extent>
+        </Layer>
+        <Layer queryable="1">
+          <Name>temp-obs</Name>
+          <Title>TEMP observations</Title>
+          <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+          <Dimension name="elevation" units="hPa" unitSymbol=""/>
+          <Dimension name="time" units="ISO8601"/>
+          <Extent name="elevation" nearestValue="0" multipleValues="0" default="850">1000,925,850,700,500,400,300,250,200,150,100</Extent>
+          <Extent name="time" current="0" nearestValue="0" multipleValues="0" default="2019-03-27T00:00:00Z">2019-03-26T00:00:00Z,2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z,2019-03-27T00:00:00Z</Extent>
+        </Layer>
+        <Layer queryable="1">
+          <Name>radar-cerad</Name>
+          <Title>Radar Central Europe</Title>
+          <Abstract>Default value for the time dimension is the validity time of the latest radar image.</Abstract>
+          <LatLonBoundingBox minx="2.9999999999999916" miny="44.500000000000007" maxx="24.500000000000004" maxy="55.399999999999999"/>
+          <BoundingBox SRS="EPSG:4326" minx="44.5" miny="3" maxx="55.399999999999999" maxy="24.5"/>
+          <Dimension name="time" units="ISO8601"/>
+          <Extent name="time" current="0" nearestValue="0" multipleValues="0"/>
+          <Style>
+            <Name>default</Name>
+            <Title>Default</Title>
+            <LegendURL width="600" height="35">
+              <Format>image/png</Format>
+              <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms?SERVICE=WMS&amp;VERSION=1.1.1&amp;REQUEST=GetLegendGraphic&amp;LAYER=radar-cerad&amp;STYLE=default"/>
+            </LegendURL>
+          </Style>
+          <Style>
+            <Name>smooth</Name>
+            <Title>Smoothed</Title>
+            <LegendURL width="600" height="35">
+              <Format>image/png</Format>
+              <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms?SERVICE=WMS&amp;VERSION=1.1.1&amp;REQUEST=GetLegendGraphic&amp;LAYER=radar-cerad&amp;STYLE=smooth"/>
+            </LegendURL>
+          </Style>
+        </Layer>
+        <Layer queryable="1">
+          <Name>satellites-msg-ir</Name>
+          <Title>Meteosat Second Generation</Title>
+          <Abstract>Default value for the time dimension is the validity time of the latest satellite image.</Abstract>
+          <LatLonBoundingBox minx="-65" miny="-65" maxx="65.000000000000028" maxy="65"/>
+          <BoundingBox SRS="EPSG:4326" minx="-65" miny="-65" maxx="65" maxy="65"/>
+          <Dimension name="time" units="ISO8601"/>
+          <Extent name="time" current="0" nearestValue="0" multipleValues="0" default="2019-03-27T00:30:00Z">2019-03-26T00:15:00Z,2019-03-26T00:30:00Z,2019-03-26T06:00:00Z,2019-03-26T06:30:00Z,2019-03-26T12:00:00Z,2019-03-26T12:30:00Z,2019-03-26T18:00:00Z,2019-03-26T18:15:00Z,2019-03-26T18:30:00Z,2019-03-27T00:15:00Z,2019-03-27T00:30:00Z</Extent>
+          <Style>
+            <Name>ir-10.8-grey</Name>
+            <Title>Channel 9 IR 10.8um Grey scale colours</Title>
+          </Style>
+          <Style>
+            <Name>vis-0.6-grey</Name>
+            <Title>Channel 1 VIS 0.6um Grey scale colours</Title>
+          </Style>
+          <Style>
+            <Name>vis-0.8-grey</Name>
+            <Title>Channel 2 VIS 0.8um Grey scale colours</Title>
+          </Style>
+          <Style>
+            <Name>ir-3.9-grey</Name>
+            <Title>Channel 4 IR 3.9um Grey scale colours</Title>
+          </Style>
+          <Style>
+            <Name>wv-6.2-grey</Name>
+            <Title>Channel 5 WV 6.2um Grey scale colours</Title>
+          </Style>
+        </Layer>
+      </Layer>
+      <Layer>
+        <Title>Numerical Weather Prediction</Title>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+        <Layer queryable="1">
+          <Name>gfs-temperature-isbl</Name>
+          <Title>GFS Temperature (isobaric levels)</Title>
+          <Abstract>Reference time dimension determines model run initialisation time and defaults to time of the latest complete model run.               Time dimension denotes forecast validity time and defaults to first forecast time stamp.</Abstract>
+          <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+          <Dimension name="reference_time" units="ISO8601"/>
+          <Dimension name="elevation" units="isobaric-surface" unitSymbol="hPa"/>
+          <Dimension name="time" units="ISO8601"/>
+          <Extent name="reference_time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z</Extent>
+          <Extent name="elevation" nearestValue="0" multipleValues="0" default="850">1000,975,950,925,900,850,800,750,700,650,600,550,500,450,400,350,300,250,200,150,100,70,50,30,20,10,7,5,3,2,1</Extent>
+          <Extent name="time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T09:00:00Z,2019-03-26T12:00:00Z,2019-03-26T15:00:00Z,2019-03-26T18:00:00Z,2019-03-26T21:00:00Z,2019-03-27T00:00:00Z,2019-03-27T03:00:00Z,2019-03-27T06:00:00Z,2019-03-27T09:00:00Z,2019-03-27T12:00:00Z,2019-03-27T15:00:00Z,2019-03-27T18:00:00Z,2019-03-27T21:00:00Z,2019-03-28T00:00:00Z,2019-03-28T03:00:00Z,2019-03-28T06:00:00Z,2019-03-28T09:00:00Z,2019-03-28T12:00:00Z,2019-03-28T15:00:00Z,2019-03-28T18:00:00Z,2019-03-29T00:00:00Z,2019-03-29T06:00:00Z,2019-03-29T12:00:00Z,2019-03-29T18:00:00Z,2019-03-30T00:00:00Z,2019-03-30T06:00:00Z,2019-03-30T12:00:00Z,2019-03-30T18:00:00Z,2019-03-31T00:00:00Z,2019-03-31T06:00:00Z,2019-03-31T12:00:00Z,2019-03-31T18:00:00Z,2019-04-01T00:00:00Z,2019-04-01T06:00:00Z,2019-04-01T12:00:00Z,2019-04-01T18:00:00Z,2019-04-02T00:00:00Z,2019-04-02T06:00:00Z,2019-04-02T12:00:00Z,2019-04-02T18:00:00Z,2019-04-03T00:00:00Z,2019-04-03T06:00:00Z,2019-04-03T12:00:00Z,2019-04-03T18:00:00Z,2019-04-04T00:00:00Z,2019-04-04T06:00:00Z,2019-04-04T12:00:00Z,2019-04-04T18:00:00Z,2019-04-05T00:00:00Z,2019-04-05T06:00:00Z,2019-04-05T12:00:00Z,2019-04-05T18:00:00Z,2019-04-06T00:00:00Z,2019-04-06T06:00:00Z,2019-04-06T12:00:00Z,2019-04-06T18:00:00Z,2019-04-07T00:00:00Z,2019-04-07T06:00:00Z,2019-04-07T12:00:00Z,2019-04-07T18:00:00Z,2019-04-08T00:00:00Z,2019-04-08T06:00:00Z,2019-04-08T12:00:00Z,2019-04-08T18:00:00Z,2019-04-09T00:00:00Z,2019-04-09T06:00:00Z,2019-04-09T12:00:00Z,2019-04-09T18:00:00Z,2019-04-10T00:00:00Z,2019-04-10T06:00:00Z,2019-04-10T12:00:00Z,2019-04-10T18:00:00Z,2019-04-11T00:00:00Z,2019-04-11T06:00:00Z,2019-04-11T12:00:00Z,2019-04-11T18:00:00Z</Extent>
+          <Style>
+            <Name>default</Name>
+            <Title>Coloured isosurface</Title>
+            <LegendURL width="600" height="35">
+              <Format>image/png</Format>
+              <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms?SERVICE=WMS&amp;VERSION=1.1.1&amp;REQUEST=GetLegendGraphic&amp;LAYER=gfs-temperature-isbl&amp;STYLE=default"/>
+            </LegendURL>
+          </Style>
+        </Layer>
+        <Layer queryable="1">
+          <Name>gfs-temperature-agl</Name>
+          <Title>GFS Temperature (meters above ground)</Title>
+          <Abstract>Reference time dimension determines model run initialisation time and defaults to time of the latest complete model run.           Time dimension denotes forecast validity time and defaults to first forecast time stamp.</Abstract>
+          <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+          <Dimension name="reference_time" units="ISO8601"/>
+          <Dimension name="elevation" units="m" unitSymbol="m"/>
+          <Dimension name="time" units="ISO8601"/>
+          <Extent name="reference_time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z</Extent>
+          <Extent name="elevation" nearestValue="0" multipleValues="0" default="2">2,80,100</Extent>
+          <Extent name="time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T09:00:00Z,2019-03-26T12:00:00Z,2019-03-26T15:00:00Z,2019-03-26T18:00:00Z,2019-03-26T21:00:00Z,2019-03-27T00:00:00Z,2019-03-27T03:00:00Z,2019-03-27T06:00:00Z,2019-03-27T09:00:00Z,2019-03-27T12:00:00Z,2019-03-27T15:00:00Z,2019-03-27T18:00:00Z,2019-03-27T21:00:00Z,2019-03-28T00:00:00Z,2019-03-28T03:00:00Z,2019-03-28T06:00:00Z,2019-03-28T09:00:00Z,2019-03-28T12:00:00Z,2019-03-28T15:00:00Z,2019-03-28T18:00:00Z,2019-03-29T00:00:00Z,2019-03-29T06:00:00Z,2019-03-29T12:00:00Z,2019-03-29T18:00:00Z,2019-03-30T00:00:00Z,2019-03-30T06:00:00Z,2019-03-30T12:00:00Z,2019-03-30T18:00:00Z,2019-03-31T00:00:00Z,2019-03-31T06:00:00Z,2019-03-31T12:00:00Z,2019-03-31T18:00:00Z,2019-04-01T00:00:00Z,2019-04-01T06:00:00Z,2019-04-01T12:00:00Z,2019-04-01T18:00:00Z,2019-04-02T00:00:00Z,2019-04-02T06:00:00Z,2019-04-02T12:00:00Z,2019-04-02T18:00:00Z,2019-04-03T00:00:00Z,2019-04-03T06:00:00Z,2019-04-03T12:00:00Z,2019-04-03T18:00:00Z,2019-04-04T00:00:00Z,2019-04-04T06:00:00Z,2019-04-04T12:00:00Z,2019-04-04T18:00:00Z,2019-04-05T00:00:00Z,2019-04-05T06:00:00Z,2019-04-05T12:00:00Z,2019-04-05T18:00:00Z,2019-04-06T00:00:00Z,2019-04-06T06:00:00Z,2019-04-06T12:00:00Z,2019-04-06T18:00:00Z,2019-04-07T00:00:00Z,2019-04-07T06:00:00Z,2019-04-07T12:00:00Z,2019-04-07T18:00:00Z,2019-04-08T00:00:00Z,2019-04-08T06:00:00Z,2019-04-08T12:00:00Z,2019-04-08T18:00:00Z,2019-04-09T00:00:00Z,2019-04-09T06:00:00Z,2019-04-09T12:00:00Z,2019-04-09T18:00:00Z,2019-04-10T00:00:00Z,2019-04-10T06:00:00Z,2019-04-10T12:00:00Z,2019-04-10T18:00:00Z,2019-04-11T00:00:00Z,2019-04-11T06:00:00Z,2019-04-11T12:00:00Z,2019-04-11T18:00:00Z</Extent>
+          <Style>
+            <Name>default</Name>
+            <Title>Coloured isosurface</Title>
+            <LegendURL width="600" height="35">
+              <Format>image/png</Format>
+              <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms?SERVICE=WMS&amp;VERSION=1.1.1&amp;REQUEST=GetLegendGraphic&amp;LAYER=gfs-temperature-agl&amp;STYLE=default"/>
+            </LegendURL>
+          </Style>
+        </Layer>
+        <Layer queryable="1">
+          <Name>gfs-wind-isbl</Name>
+          <Title>GFS Wind (isobaric levels)</Title>
+          <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+          <Dimension name="reference_time" units="ISO8601"/>
+          <Dimension name="elevation" units="isobaric-surface" unitSymbol="hPa"/>
+          <Dimension name="time" units="ISO8601"/>
+          <Extent name="reference_time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z</Extent>
+          <Extent name="elevation" nearestValue="0" multipleValues="0" default="850">1000,975,950,925,900,850,800,750,700,650,600,550,500,450,400,350,300,250,200,150,100,70,50,30,20,10,7,5,3,2,1</Extent>
+          <Extent name="time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T09:00:00Z,2019-03-26T12:00:00Z,2019-03-26T15:00:00Z,2019-03-26T18:00:00Z,2019-03-26T21:00:00Z,2019-03-27T00:00:00Z,2019-03-27T03:00:00Z,2019-03-27T06:00:00Z,2019-03-27T09:00:00Z,2019-03-27T12:00:00Z,2019-03-27T15:00:00Z,2019-03-27T18:00:00Z,2019-03-27T21:00:00Z,2019-03-28T00:00:00Z,2019-03-28T03:00:00Z,2019-03-28T06:00:00Z,2019-03-28T09:00:00Z,2019-03-28T12:00:00Z,2019-03-28T15:00:00Z,2019-03-28T18:00:00Z,2019-03-29T00:00:00Z,2019-03-29T06:00:00Z,2019-03-29T12:00:00Z,2019-03-29T18:00:00Z,2019-03-30T00:00:00Z,2019-03-30T06:00:00Z,2019-03-30T12:00:00Z,2019-03-30T18:00:00Z,2019-03-31T00:00:00Z,2019-03-31T06:00:00Z,2019-03-31T12:00:00Z,2019-03-31T18:00:00Z,2019-04-01T00:00:00Z,2019-04-01T06:00:00Z,2019-04-01T12:00:00Z,2019-04-01T18:00:00Z,2019-04-02T00:00:00Z,2019-04-02T06:00:00Z,2019-04-02T12:00:00Z,2019-04-02T18:00:00Z,2019-04-03T00:00:00Z,2019-04-03T06:00:00Z,2019-04-03T12:00:00Z,2019-04-03T18:00:00Z,2019-04-04T00:00:00Z,2019-04-04T06:00:00Z,2019-04-04T12:00:00Z,2019-04-04T18:00:00Z,2019-04-05T00:00:00Z,2019-04-05T06:00:00Z,2019-04-05T12:00:00Z,2019-04-05T18:00:00Z,2019-04-06T00:00:00Z,2019-04-06T06:00:00Z,2019-04-06T12:00:00Z,2019-04-06T18:00:00Z,2019-04-07T00:00:00Z,2019-04-07T06:00:00Z,2019-04-07T12:00:00Z,2019-04-07T18:00:00Z,2019-04-08T00:00:00Z,2019-04-08T06:00:00Z,2019-04-08T12:00:00Z,2019-04-08T18:00:00Z,2019-04-09T00:00:00Z,2019-04-09T06:00:00Z,2019-04-09T12:00:00Z,2019-04-09T18:00:00Z,2019-04-10T00:00:00Z,2019-04-10T06:00:00Z,2019-04-10T12:00:00Z,2019-04-10T18:00:00Z,2019-04-11T00:00:00Z,2019-04-11T06:00:00Z,2019-04-11T12:00:00Z,2019-04-11T18:00:00Z</Extent>
+          <Style>
+            <Name>default</Name>
+            <Title>Black windbarbs</Title>
+          </Style>
+        </Layer>
+        <Layer queryable="1">
+          <Name>gfs-wind-agl</Name>
+          <Title>GFS Wind (meters above ground)</Title>
+          <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+          <Dimension name="reference_time" units="ISO8601"/>
+          <Dimension name="elevation" units="m" unitSymbol="m"/>
+          <Dimension name="time" units="ISO8601"/>
+          <Extent name="reference_time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z</Extent>
+          <Extent name="elevation" nearestValue="0" multipleValues="0" default="10">10,80,100</Extent>
+          <Extent name="time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T09:00:00Z,2019-03-26T12:00:00Z,2019-03-26T15:00:00Z,2019-03-26T18:00:00Z,2019-03-26T21:00:00Z,2019-03-27T00:00:00Z,2019-03-27T03:00:00Z,2019-03-27T06:00:00Z,2019-03-27T09:00:00Z,2019-03-27T12:00:00Z,2019-03-27T15:00:00Z,2019-03-27T18:00:00Z,2019-03-27T21:00:00Z,2019-03-28T00:00:00Z,2019-03-28T03:00:00Z,2019-03-28T06:00:00Z,2019-03-28T09:00:00Z,2019-03-28T12:00:00Z,2019-03-28T15:00:00Z,2019-03-28T18:00:00Z,2019-03-29T00:00:00Z,2019-03-29T06:00:00Z,2019-03-29T12:00:00Z,2019-03-29T18:00:00Z,2019-03-30T00:00:00Z,2019-03-30T06:00:00Z,2019-03-30T12:00:00Z,2019-03-30T18:00:00Z,2019-03-31T00:00:00Z,2019-03-31T06:00:00Z,2019-03-31T12:00:00Z,2019-03-31T18:00:00Z,2019-04-01T00:00:00Z,2019-04-01T06:00:00Z,2019-04-01T12:00:00Z,2019-04-01T18:00:00Z,2019-04-02T00:00:00Z,2019-04-02T06:00:00Z,2019-04-02T12:00:00Z,2019-04-02T18:00:00Z,2019-04-03T00:00:00Z,2019-04-03T06:00:00Z,2019-04-03T12:00:00Z,2019-04-03T18:00:00Z,2019-04-04T00:00:00Z,2019-04-04T06:00:00Z,2019-04-04T12:00:00Z,2019-04-04T18:00:00Z,2019-04-05T00:00:00Z,2019-04-05T06:00:00Z,2019-04-05T12:00:00Z,2019-04-05T18:00:00Z,2019-04-06T00:00:00Z,2019-04-06T06:00:00Z,2019-04-06T12:00:00Z,2019-04-06T18:00:00Z,2019-04-07T00:00:00Z,2019-04-07T06:00:00Z,2019-04-07T12:00:00Z,2019-04-07T18:00:00Z,2019-04-08T00:00:00Z,2019-04-08T06:00:00Z,2019-04-08T12:00:00Z,2019-04-08T18:00:00Z,2019-04-09T00:00:00Z,2019-04-09T06:00:00Z,2019-04-09T12:00:00Z,2019-04-09T18:00:00Z,2019-04-10T00:00:00Z,2019-04-10T06:00:00Z,2019-04-10T12:00:00Z,2019-04-10T18:00:00Z,2019-04-11T00:00:00Z,2019-04-11T06:00:00Z,2019-04-11T12:00:00Z,2019-04-11T18:00:00Z</Extent>
+          <Style>
+            <Name>default</Name>
+            <Title>Black windbarbs</Title>
+          </Style>
+        </Layer>
+        <Layer queryable="1">
+          <Name>gfs-msl-pressure</Name>
+          <Title>GFS MSL Pressure</Title>
+          <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+          <Dimension name="reference_time" units="ISO8601"/>
+          <Dimension name="time" units="ISO8601"/>
+          <Extent name="reference_time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z</Extent>
+          <Extent name="time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T09:00:00Z,2019-03-26T12:00:00Z,2019-03-26T15:00:00Z,2019-03-26T18:00:00Z,2019-03-26T21:00:00Z,2019-03-27T00:00:00Z,2019-03-27T03:00:00Z,2019-03-27T06:00:00Z,2019-03-27T09:00:00Z,2019-03-27T12:00:00Z,2019-03-27T15:00:00Z,2019-03-27T18:00:00Z,2019-03-27T21:00:00Z,2019-03-28T00:00:00Z,2019-03-28T03:00:00Z,2019-03-28T06:00:00Z,2019-03-28T09:00:00Z,2019-03-28T12:00:00Z,2019-03-28T15:00:00Z,2019-03-28T18:00:00Z,2019-03-29T00:00:00Z,2019-03-29T06:00:00Z,2019-03-29T12:00:00Z,2019-03-29T18:00:00Z,2019-03-30T00:00:00Z,2019-03-30T06:00:00Z,2019-03-30T12:00:00Z,2019-03-30T18:00:00Z,2019-03-31T00:00:00Z,2019-03-31T06:00:00Z,2019-03-31T12:00:00Z,2019-03-31T18:00:00Z,2019-04-01T00:00:00Z,2019-04-01T06:00:00Z,2019-04-01T12:00:00Z,2019-04-01T18:00:00Z,2019-04-02T00:00:00Z,2019-04-02T06:00:00Z,2019-04-02T12:00:00Z,2019-04-02T18:00:00Z,2019-04-03T00:00:00Z,2019-04-03T06:00:00Z,2019-04-03T12:00:00Z,2019-04-03T18:00:00Z,2019-04-04T00:00:00Z,2019-04-04T06:00:00Z,2019-04-04T12:00:00Z,2019-04-04T18:00:00Z,2019-04-05T00:00:00Z,2019-04-05T06:00:00Z,2019-04-05T12:00:00Z,2019-04-05T18:00:00Z,2019-04-06T00:00:00Z,2019-04-06T06:00:00Z,2019-04-06T12:00:00Z,2019-04-06T18:00:00Z,2019-04-07T00:00:00Z,2019-04-07T06:00:00Z,2019-04-07T12:00:00Z,2019-04-07T18:00:00Z,2019-04-08T00:00:00Z,2019-04-08T06:00:00Z,2019-04-08T12:00:00Z,2019-04-08T18:00:00Z,2019-04-09T00:00:00Z,2019-04-09T06:00:00Z,2019-04-09T12:00:00Z,2019-04-09T18:00:00Z,2019-04-10T00:00:00Z,2019-04-10T06:00:00Z,2019-04-10T12:00:00Z,2019-04-10T18:00:00Z,2019-04-11T00:00:00Z,2019-04-11T06:00:00Z,2019-04-11T12:00:00Z,2019-04-11T18:00:00Z</Extent>
+          <Style>
+            <Name>default</Name>
+            <Title>Black 4hPa isoline step</Title>
+          </Style>
+          <Style>
+            <Name>black-2hpa</Name>
+            <Title>Black 2hPa isoline step</Title>
+          </Style>
+          <Style>
+            <Name>black-1hpa</Name>
+            <Title>Black 1hPa isoline step</Title>
+          </Style>
+        </Layer>
+        <Layer queryable="1">
+          <Name>gfs-precipication-6h</Name>
+          <Title>GFS Precipitation 6 hourly</Title>
+          <Abstract>Reference time dimension determines model run initialisation time and defaults to time of the latest complete model run.           Time dimension denotes forecast validity time and defaults to first forecast time stamp.</Abstract>
+          <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+          <Dimension name="reference_time" units="ISO8601"/>
+          <Dimension name="time" units="ISO8601"/>
+          <Extent name="reference_time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z</Extent>
+          <Extent name="time" current="0" nearestValue="0" multipleValues="0" default="2019-03-27T00:00:00Z">2019-03-26T12:00:00Z,2019-03-26T15:00:00Z,2019-03-26T18:00:00Z,2019-03-26T21:00:00Z,2019-03-27T00:00:00Z,2019-03-27T03:00:00Z,2019-03-27T06:00:00Z,2019-03-27T09:00:00Z,2019-03-27T12:00:00Z,2019-03-27T15:00:00Z,2019-03-27T18:00:00Z,2019-03-27T21:00:00Z,2019-03-28T00:00:00Z,2019-03-28T03:00:00Z,2019-03-28T06:00:00Z,2019-03-28T09:00:00Z,2019-03-28T12:00:00Z,2019-03-28T15:00:00Z,2019-03-28T18:00:00Z,2019-03-29T00:00:00Z,2019-03-29T06:00:00Z,2019-03-29T12:00:00Z,2019-03-29T18:00:00Z,2019-03-30T00:00:00Z,2019-03-30T06:00:00Z,2019-03-30T12:00:00Z,2019-03-30T18:00:00Z,2019-03-31T00:00:00Z,2019-03-31T06:00:00Z,2019-03-31T12:00:00Z,2019-03-31T18:00:00Z</Extent>
+          <Style>
+            <Name>default</Name>
+            <Title>Coloured isosurface</Title>
+            <LegendURL width="600" height="35">
+              <Format>image/png</Format>
+              <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms?SERVICE=WMS&amp;VERSION=1.1.1&amp;REQUEST=GetLegendGraphic&amp;LAYER=gfs-precipication-6h&amp;STYLE=default"/>
+            </LegendURL>
+          </Style>
+        </Layer>
+        <Layer queryable="1">
+          <Name>gefs-temperature-agl</Name>
+          <Title>GEFS Temperature (members, meters above ground)</Title>
+          <Abstract>Reference time dimension determines model run initialisation time and defaults to time of the latest complete model run.           Time dimension denotes forecast validity time and defaults to first forecast time stamp.</Abstract>
+          <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+          <Dimension name="reference_time" units="ISO8601"/>
+          <Dimension name="member" units=""/>
+          <Dimension name="elevation" units="m" unitSymbol="m"/>
+          <Dimension name="time" units="ISO8601"/>
+          <Extent name="reference_time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z</Extent>
+          <Extent name="member" nearestValue="0" multipleValues="0">1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20</Extent>
+          <Extent name="elevation" nearestValue="0" multipleValues="0" default="2">2</Extent>
+          <Extent name="time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z,2019-03-27T00:00:00Z,2019-03-27T06:00:00Z,2019-03-27T12:00:00Z,2019-03-27T18:00:00Z,2019-03-28T00:00:00Z,2019-03-28T06:00:00Z,2019-03-28T12:00:00Z,2019-03-28T18:00:00Z,2019-03-29T00:00:00Z,2019-03-29T06:00:00Z,2019-03-29T12:00:00Z,2019-03-29T18:00:00Z,2019-03-30T00:00:00Z,2019-03-30T06:00:00Z,2019-03-30T12:00:00Z,2019-03-30T18:00:00Z,2019-03-31T00:00:00Z,2019-03-31T06:00:00Z,2019-03-31T12:00:00Z,2019-03-31T18:00:00Z,2019-04-01T00:00:00Z,2019-04-01T06:00:00Z,2019-04-01T12:00:00Z,2019-04-01T18:00:00Z</Extent>
+          <Style>
+            <Name>default</Name>
+            <Title>Coloured isosurface</Title>
+            <LegendURL width="600" height="35">
+              <Format>image/png</Format>
+              <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms?SERVICE=WMS&amp;VERSION=1.1.1&amp;REQUEST=GetLegendGraphic&amp;LAYER=gefs-temperature-agl&amp;STYLE=default"/>
+            </LegendURL>
+          </Style>
+        </Layer>
+        <Layer queryable="1">
+          <Name>gefs-temperature-isbl</Name>
+          <Title>GEFS Temperature (isobaric levels)</Title>
+          <Abstract>Reference time dimension determines model run initialisation time and defaults to time of the latest complete model run.           Time dimension denotes forecast validity time and defaults to first forecast time stamp.</Abstract>
+          <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+          <Dimension name="reference_time" units="ISO8601"/>
+          <Dimension name="member" units=""/>
+          <Dimension name="elevation" units="isobaric-surface" unitSymbol="hPa"/>
+          <Dimension name="time" units="ISO8601"/>
+          <Extent name="reference_time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z</Extent>
+          <Extent name="member" nearestValue="0" multipleValues="0">1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20</Extent>
+          <Extent name="elevation" nearestValue="0" multipleValues="0" default="850">1000,925,850,700,500,250,200,100,50,10</Extent>
+          <Extent name="time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z,2019-03-27T00:00:00Z,2019-03-27T06:00:00Z,2019-03-27T12:00:00Z,2019-03-27T18:00:00Z,2019-03-28T00:00:00Z,2019-03-28T06:00:00Z,2019-03-28T12:00:00Z,2019-03-28T18:00:00Z,2019-03-29T00:00:00Z,2019-03-29T06:00:00Z,2019-03-29T12:00:00Z,2019-03-29T18:00:00Z,2019-03-30T00:00:00Z,2019-03-30T06:00:00Z,2019-03-30T12:00:00Z,2019-03-30T18:00:00Z,2019-03-31T00:00:00Z,2019-03-31T06:00:00Z,2019-03-31T12:00:00Z,2019-03-31T18:00:00Z,2019-04-01T00:00:00Z,2019-04-01T06:00:00Z,2019-04-01T12:00:00Z,2019-04-01T18:00:00Z</Extent>
+          <Style>
+            <Name>default</Name>
+            <Title>Coloured isosurface</Title>
+            <LegendURL width="600" height="35">
+              <Format>image/png</Format>
+              <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms?SERVICE=WMS&amp;VERSION=1.1.1&amp;REQUEST=GetLegendGraphic&amp;LAYER=gefs-temperature-isbl&amp;STYLE=default"/>
+            </LegendURL>
+          </Style>
+        </Layer>
+        <Layer queryable="1">
+          <Name>gefs-temperature-probability-agl</Name>
+          <Title>GEFS Temperature Probability (meters above ground)</Title>
+          <Abstract>Reference time dimension determines model run initialisation time and defaults to time of the latest complete model run.           Time dimension denotes forecast validity time and defaults to first forecast time stamp.</Abstract>
+          <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+          <Dimension name="reference_time" units="ISO8601"/>
+          <Dimension name="elevation" units="m" unitSymbol="m"/>
+          <Dimension name="time" units="ISO8601"/>
+          <Dimension name="threshold_lower" units="C" unitSymbol="C"/>
+          <Dimension name="threshold_upper" units="C" unitSymbol="C"/>
+          <Extent name="reference_time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z</Extent>
+          <Extent name="elevation" nearestValue="0" multipleValues="0">2</Extent>
+          <Extent name="time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z,2019-03-27T00:00:00Z,2019-03-27T06:00:00Z,2019-03-27T12:00:00Z,2019-03-27T18:00:00Z,2019-03-28T00:00:00Z,2019-03-28T06:00:00Z,2019-03-28T12:00:00Z,2019-03-28T18:00:00Z,2019-03-29T00:00:00Z,2019-03-29T06:00:00Z,2019-03-29T12:00:00Z,2019-03-29T18:00:00Z,2019-03-30T00:00:00Z,2019-03-30T06:00:00Z,2019-03-30T12:00:00Z,2019-03-30T18:00:00Z,2019-03-31T00:00:00Z,2019-03-31T06:00:00Z,2019-03-31T12:00:00Z,2019-03-31T18:00:00Z,2019-04-01T00:00:00Z,2019-04-01T06:00:00Z,2019-04-01T12:00:00Z,2019-04-01T18:00:00Z</Extent>
+          <Extent name="threshold_lower" nearestValue="0" multipleValues="0" default="30">-100/100</Extent>
+          <Extent name="threshold_upper" nearestValue="0" multipleValues="0" default="100">-100/100</Extent>
+          <Style>
+            <Name>default</Name>
+            <Title>Coloured isosurface</Title>
+            <LegendURL width="600" height="35">
+              <Format>image/png</Format>
+              <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms?SERVICE=WMS&amp;VERSION=1.1.1&amp;REQUEST=GetLegendGraphic&amp;LAYER=gefs-temperature-probability-agl&amp;STYLE=default"/>
+            </LegendURL>
+          </Style>
+        </Layer>
+        <Layer queryable="1">
+          <Name>gefs-temperature-probability-isbl</Name>
+          <Title>GEFS Temperature Probability (isobaric levels)</Title>
+          <Abstract>Reference time dimension determines model run initialisation time and defaults to time of the latest complete model run.           Time dimension denotes forecast validity time and defaults to first forecast time stamp.</Abstract>
+          <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+          <Dimension name="reference_time" units="ISO8601"/>
+          <Dimension name="elevation" units="isobaric-surface" unitSymbol="hPa"/>
+          <Dimension name="time" units="ISO8601"/>
+          <Dimension name="threshold_lower" units="C" unitSymbol="C"/>
+          <Dimension name="threshold_upper" units="C" unitSymbol="C"/>
+          <Extent name="reference_time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z</Extent>
+          <Extent name="elevation" nearestValue="0" multipleValues="0">1000,925,850,700,500,250,200,100,50,10</Extent>
+          <Extent name="time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z,2019-03-27T00:00:00Z,2019-03-27T06:00:00Z,2019-03-27T12:00:00Z,2019-03-27T18:00:00Z,2019-03-28T00:00:00Z,2019-03-28T06:00:00Z,2019-03-28T12:00:00Z,2019-03-28T18:00:00Z,2019-03-29T00:00:00Z,2019-03-29T06:00:00Z,2019-03-29T12:00:00Z,2019-03-29T18:00:00Z,2019-03-30T00:00:00Z,2019-03-30T06:00:00Z,2019-03-30T12:00:00Z,2019-03-30T18:00:00Z,2019-03-31T00:00:00Z,2019-03-31T06:00:00Z,2019-03-31T12:00:00Z,2019-03-31T18:00:00Z,2019-04-01T00:00:00Z,2019-04-01T06:00:00Z,2019-04-01T12:00:00Z,2019-04-01T18:00:00Z</Extent>
+          <Extent name="threshold_lower" nearestValue="0" multipleValues="0" default="30">-100/100</Extent>
+          <Extent name="threshold_upper" nearestValue="0" multipleValues="0" default="100">-100/100</Extent>
+          <Style>
+            <Name>default</Name>
+            <Title>Coloured isosurface</Title>
+            <LegendURL width="600" height="35">
+              <Format>image/png</Format>
+              <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms?SERVICE=WMS&amp;VERSION=1.1.1&amp;REQUEST=GetLegendGraphic&amp;LAYER=gefs-temperature-probability-isbl&amp;STYLE=default"/>
+            </LegendURL>
+          </Style>
+        </Layer>
+        <Layer queryable="1">
+          <Name>gefs-temperature-percentile-agl</Name>
+          <Title>GEFS Temperature Percentile (meters above ground)</Title>
+          <Abstract>Reference time dimension determines model run initialisation time and defaults to time of the latest complete model run.           Time dimension denotes forecast validity time and defaults to first forecast time stamp.</Abstract>
+          <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+          <Dimension name="reference_time" units="ISO8601"/>
+          <Dimension name="elevation" units="m" unitSymbol="m"/>
+          <Dimension name="time" units="ISO8601"/>
+          <Dimension name="percentile" units="%" unitSymbol="%"/>
+          <Extent name="reference_time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z</Extent>
+          <Extent name="elevation" nearestValue="0" multipleValues="0">2</Extent>
+          <Extent name="time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z,2019-03-27T00:00:00Z,2019-03-27T06:00:00Z,2019-03-27T12:00:00Z,2019-03-27T18:00:00Z,2019-03-28T00:00:00Z,2019-03-28T06:00:00Z,2019-03-28T12:00:00Z,2019-03-28T18:00:00Z,2019-03-29T00:00:00Z,2019-03-29T06:00:00Z,2019-03-29T12:00:00Z,2019-03-29T18:00:00Z,2019-03-30T00:00:00Z,2019-03-30T06:00:00Z,2019-03-30T12:00:00Z,2019-03-30T18:00:00Z,2019-03-31T00:00:00Z,2019-03-31T06:00:00Z,2019-03-31T12:00:00Z,2019-03-31T18:00:00Z,2019-04-01T00:00:00Z,2019-04-01T06:00:00Z,2019-04-01T12:00:00Z,2019-04-01T18:00:00Z</Extent>
+          <Extent name="percentile" nearestValue="0" multipleValues="0" default="85">0/10000</Extent>
+          <Style>
+            <Name>default</Name>
+            <Title>Coloured isosurface</Title>
+            <LegendURL width="600" height="35">
+              <Format>image/png</Format>
+              <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms?SERVICE=WMS&amp;VERSION=1.1.1&amp;REQUEST=GetLegendGraphic&amp;LAYER=gefs-temperature-percentile-agl&amp;STYLE=default"/>
+            </LegendURL>
+          </Style>
+        </Layer>
+        <Layer queryable="1">
+          <Name>gefs-temperature-percentile-isbl</Name>
+          <Title>GEFS Temperature Percentile (isobaric levels)</Title>
+          <Abstract>Reference time dimension determines model run initialisation time and defaults to time of the latest complete model run.           Time dimension denotes forecast validity time and defaults to first forecast time stamp.</Abstract>
+          <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+          <Dimension name="reference_time" units="ISO8601"/>
+          <Dimension name="elevation" units="isobaric-surface" unitSymbol="hPa"/>
+          <Dimension name="time" units="ISO8601"/>
+          <Dimension name="percentile" units="%" unitSymbol="%"/>
+          <Extent name="reference_time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z</Extent>
+          <Extent name="elevation" nearestValue="0" multipleValues="0">1000,925,850,700,500,250,200,100,50,10</Extent>
+          <Extent name="time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z,2019-03-27T00:00:00Z,2019-03-27T06:00:00Z,2019-03-27T12:00:00Z,2019-03-27T18:00:00Z,2019-03-28T00:00:00Z,2019-03-28T06:00:00Z,2019-03-28T12:00:00Z,2019-03-28T18:00:00Z,2019-03-29T00:00:00Z,2019-03-29T06:00:00Z,2019-03-29T12:00:00Z,2019-03-29T18:00:00Z,2019-03-30T00:00:00Z,2019-03-30T06:00:00Z,2019-03-30T12:00:00Z,2019-03-30T18:00:00Z,2019-03-31T00:00:00Z,2019-03-31T06:00:00Z,2019-03-31T12:00:00Z,2019-03-31T18:00:00Z,2019-04-01T00:00:00Z,2019-04-01T06:00:00Z,2019-04-01T12:00:00Z,2019-04-01T18:00:00Z</Extent>
+          <Extent name="percentile" nearestValue="0" multipleValues="0" default="85">0/10000</Extent>
+          <Style>
+            <Name>default</Name>
+            <Title>Coloured isosurface</Title>
+            <LegendURL width="600" height="35">
+              <Format>image/png</Format>
+              <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms?SERVICE=WMS&amp;VERSION=1.1.1&amp;REQUEST=GetLegendGraphic&amp;LAYER=gefs-temperature-percentile-isbl&amp;STYLE=default"/>
+            </LegendURL>
+          </Style>
+        </Layer>
+        <Layer queryable="1">
+          <Name>gefs-precipication-6h</Name>
+          <Title>GEFS Precipitation 6 hourly (members)</Title>
+          <Abstract>Reference time dimension determines model run initialisation time and defaults to time of the latest complete model run.           Time dimension denotes forecast validity time and defaults to first forecast time stamp.</Abstract>
+          <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+          <Dimension name="reference_time" units="ISO8601"/>
+          <Dimension name="member" units=""/>
+          <Dimension name="time" units="ISO8601"/>
+          <Extent name="reference_time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z</Extent>
+          <Extent name="member" nearestValue="0" multipleValues="0">1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20</Extent>
+          <Extent name="time" current="0" nearestValue="0" multipleValues="0" default="2019-03-27T00:00:00Z">2019-03-26T12:00:00Z,2019-03-26T18:00:00Z,2019-03-27T00:00:00Z,2019-03-27T06:00:00Z,2019-03-27T12:00:00Z,2019-03-27T18:00:00Z,2019-03-28T00:00:00Z,2019-03-28T06:00:00Z,2019-03-28T12:00:00Z,2019-03-28T18:00:00Z,2019-03-29T00:00:00Z,2019-03-29T06:00:00Z,2019-03-29T12:00:00Z,2019-03-29T18:00:00Z,2019-03-30T00:00:00Z,2019-03-30T06:00:00Z,2019-03-30T12:00:00Z,2019-03-30T18:00:00Z,2019-03-31T00:00:00Z,2019-03-31T06:00:00Z,2019-03-31T12:00:00Z,2019-03-31T18:00:00Z,2019-04-01T00:00:00Z,2019-04-01T06:00:00Z,2019-04-01T12:00:00Z,2019-04-01T18:00:00Z</Extent>
+          <Style>
+            <Name>default</Name>
+            <Title>Coloured isosurface</Title>
+            <LegendURL width="600" height="35">
+              <Format>image/png</Format>
+              <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms?SERVICE=WMS&amp;VERSION=1.1.1&amp;REQUEST=GetLegendGraphic&amp;LAYER=gefs-precipication-6h&amp;STYLE=default"/>
+            </LegendURL>
+          </Style>
+        </Layer>
+        <Layer queryable="1">
+          <Name>gefs-precipitation-probability-6h</Name>
+          <Title>GEFS Precipitation Probability 6 hourly</Title>
+          <Abstract>Reference time dimension determines model run initialisation time and defaults to time of the latest complete model run.           Time dimension denotes forecast validity time and defaults to first forecast time stamp.</Abstract>
+          <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+          <Dimension name="reference_time" units="ISO8601"/>
+          <Dimension name="time" units="ISO8601"/>
+          <Dimension name="threshold" units="mm" unitSymbol="mm"/>
+          <Extent name="reference_time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z</Extent>
+          <Extent name="time" current="0" nearestValue="0" multipleValues="0" default="2019-03-27T00:00:00Z">2019-03-26T12:00:00Z,2019-03-26T18:00:00Z,2019-03-27T00:00:00Z,2019-03-27T06:00:00Z,2019-03-27T12:00:00Z,2019-03-27T18:00:00Z,2019-03-28T00:00:00Z,2019-03-28T06:00:00Z,2019-03-28T12:00:00Z,2019-03-28T18:00:00Z,2019-03-29T00:00:00Z,2019-03-29T06:00:00Z,2019-03-29T12:00:00Z,2019-03-29T18:00:00Z,2019-03-30T00:00:00Z,2019-03-30T06:00:00Z,2019-03-30T12:00:00Z,2019-03-30T18:00:00Z,2019-03-31T00:00:00Z,2019-03-31T06:00:00Z,2019-03-31T12:00:00Z,2019-03-31T18:00:00Z,2019-04-01T00:00:00Z,2019-04-01T06:00:00Z,2019-04-01T12:00:00Z,2019-04-01T18:00:00Z</Extent>
+          <Extent name="threshold" nearestValue="0" multipleValues="0" default="5">0/100</Extent>
+          <Style>
+            <Name>default</Name>
+            <Title>Coloured isosurface</Title>
+            <LegendURL width="600" height="35">
+              <Format>image/png</Format>
+              <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms?SERVICE=WMS&amp;VERSION=1.1.1&amp;REQUEST=GetLegendGraphic&amp;LAYER=gefs-precipitation-probability-6h&amp;STYLE=default"/>
+            </LegendURL>
+          </Style>
+        </Layer>
+        <Layer queryable="1">
+          <Name>gefs-precipitation-percentile-6h</Name>
+          <Title>GEFS Precipitation Percentile 6 hourly</Title>
+          <Abstract>Reference time dimension determines model run initialisation time and defaults to time of the latest complete model run.           Time dimension denotes forecast validity time and defaults to first forecast time stamp.</Abstract>
+          <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+          <Dimension name="reference_time" units="ISO8601"/>
+          <Dimension name="time" units="ISO8601"/>
+          <Dimension name="percentile" units="%" unitSymbol="%"/>
+          <Extent name="reference_time" current="0" nearestValue="0" multipleValues="0" default="2019-03-26T18:00:00Z">2019-03-26T06:00:00Z,2019-03-26T12:00:00Z,2019-03-26T18:00:00Z</Extent>
+          <Extent name="time" current="0" nearestValue="0" multipleValues="0" default="2019-03-27T00:00:00Z">2019-03-26T12:00:00Z,2019-03-26T18:00:00Z,2019-03-27T00:00:00Z,2019-03-27T06:00:00Z,2019-03-27T12:00:00Z,2019-03-27T18:00:00Z,2019-03-28T00:00:00Z,2019-03-28T06:00:00Z,2019-03-28T12:00:00Z,2019-03-28T18:00:00Z,2019-03-29T00:00:00Z,2019-03-29T06:00:00Z,2019-03-29T12:00:00Z,2019-03-29T18:00:00Z,2019-03-30T00:00:00Z,2019-03-30T06:00:00Z,2019-03-30T12:00:00Z,2019-03-30T18:00:00Z,2019-03-31T00:00:00Z,2019-03-31T06:00:00Z,2019-03-31T12:00:00Z,2019-03-31T18:00:00Z,2019-04-01T00:00:00Z,2019-04-01T06:00:00Z,2019-04-01T12:00:00Z,2019-04-01T18:00:00Z</Extent>
+          <Extent name="percentile" nearestValue="0" multipleValues="0" default="85">0/10000</Extent>
+          <Style>
+            <Name>default</Name>
+            <Title>Coloured isosurface</Title>
+            <LegendURL width="600" height="35">
+              <Format>image/png</Format>
+              <OnlineResource xlink:type="simple" xlink:href="https://ogcie.iblsoft.com/metocean/wms?SERVICE=WMS&amp;VERSION=1.1.1&amp;REQUEST=GetLegendGraphic&amp;LAYER=gefs-precipitation-percentile-6h&amp;STYLE=default"/>
+            </LegendURL>
+          </Style>
+        </Layer>
+      </Layer>
+      <Layer>
+        <Title>Static Layers</Title>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+        <Layer queryable="0">
+          <Name>foreground-lines</Name>
+          <Title>Border lines</Title>
+          <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90"/>
+          <Style>
+            <Name>default</Name>
+            <Title>Black solid lines, 15 deg. grid</Title>
+          </Style>
+        </Layer>
+      </Layer>
+    </Layer>
+  </Capability>
+</WMT_MS_Capabilities>

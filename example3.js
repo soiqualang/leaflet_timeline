@@ -19,6 +19,7 @@ var testLayer = L.tileLayer.wms(testWMS, {
     layers: 'test:geotiff',
     format: 'image/png',
     transparent: true,
+	crs: L.CRS.EPSG32648,
     time: '2014-09-18T07:00:00'
     //opacity: 0.3,
     //attribution: 'hahahaha'
